@@ -1,4 +1,3 @@
-
 # Stream Warden
 
 [![Python](https://img.shields.io/badge/python-3.7+-blue.svg)](https://www.python.org)
@@ -17,46 +16,50 @@ Stream Warden is a Python script that intelligently manages your internet bandwi
 
 ## Installation
 
+**Before Starting:**
+
+*   **Create a `config.yml` file:** You'll need to create a `config.yml` file locally on your system (e.g., at `/opt/stream-warden/config.yml`). You can use the example `config.yml` in the repository as a starting point and adjust the settings according to your preferences. **This file will be mounted into the docker container.**
+
 ### Using Docker
 
-1. **Pull the Docker Image**:
-   ```bash
-   docker pull dosk3n/stream-warden:latest
-   ```
+1.  **Pull the Docker Image**:
+    ```bash
+    docker pull dosk3n/stream-warden:latest
+    ```
 
-2. **Run the Docker Container**:
-   ```bash
-   docker run -v /opt/stream-warden/config:/config -v /opt/stream-warden/logs:/stream-warden/logs dosk3n/stream-warden:latest
-   ```
-   This mounts the local config and logs directories and runs Stream Warden.
+2.  **Run the Docker Container**:
+    ```bash
+    docker run -v /opt/stream-warden/config.yml:/stream-warden/config/config.yml -v /opt/stream-warden/logs:/stream-warden/logs dosk3n/stream-warden:latest
+    ```
+    This mounts your local `config.yml` and logs directories and runs Stream Warden.
 
 ### Using Docker Compose
 
-1. **Create a `docker-compose.yml` file**:
+1.  **Create a `docker-compose.yml` file**:
 
-   ```yaml
-   version: '3.8'
+    ```yaml
+    version: '3.8'
 
-   services:
-     stream-warden:
-       image: dosk3n/stream-warden:latest
-       container_name: stream-warden
-       volumes:
-         - /opt/stream-warden/config:/config
-         - /opt/stream-warden/logs:/stream-warden/logs
-       restart: unless-stopped
-   ```
+    services:
+      stream-warden:
+        image: dosk3n/stream-warden:latest
+        container_name: stream-warden
+        volumes:
+          - /opt/stream-warden/config.yml:/stream-warden/config/config.yml
+          - /opt/stream-warden/logs:/stream-warden/logs
+        restart: unless-stopped
+    ```
 
-2. **Start the Service**:
-   ```bash
-   docker compose up -d
-   ```
+2.  **Start the Service**:
+    ```bash
+    docker compose up -d
+    ```
 
-3. **Verify the container is running**:
-   ```bash
-   docker ps
-   ```
+3.  **Verify the container is running**:
+    ```bash
+    docker ps
+    ```
 
 ## Configuration
 
-All configuration for Stream Warden is done through the `config.yml` file.
+All configuration for Stream Warden is done through the `config.yml` file.  **Make sure you create a copy locally as mentioned in the 'Before Starting' section.**
