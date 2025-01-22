@@ -8,7 +8,7 @@ WORKDIR /stream-warden
 COPY stream_warden.py .
 COPY config/ ./config/
 COPY requirements.txt .
-
+COPY logs/ ./logs/
 # Install dependencies
 RUN pip install --no-cache-dir -r requirements.txt
 

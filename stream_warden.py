@@ -30,9 +30,14 @@ config = load_config()
 LOG_LEVEL_STR = config['stream_warden']['log_level'].upper()
 LOG_LEVEL = getattr(logging, LOG_LEVEL_STR, logging.INFO) # Default to INFO if invalid level
 
+LOG_DIR = "logs"
 LOG_FILE = "stream_warden.log"
 LOG_MAX_BYTES = 10 * 1024 * 1024  # 10 MB (Maximum log file size before rotation)
 LOG_BACKUP_COUNT = 5            # Keep 5 backup log files
+
+# Ensure logs directory exists
+if not os.path.exists(LOG_DIR):
+    os.makedirs(LOG_DIR)
 
 # Get root logger
 logger = logging.getLogger()
@@ -41,19 +46,16 @@ logger.setLevel(LOG_LEVEL)
 # Formatter for logs
 formatter = logging.Formatter('%(asctime)s - %(levelname)s - %(message)s')
 
-# Console handler (logs to screen)
-console_handler = logging.StreamHandler()
-console_handler.setFormatter(formatter)
-logger.addHandler(console_handler)
-
-# Rotating file handler (logs to file with size limit and rotation)
-rotating_file_handler = logging.handlers.RotatingFileHandler(
-    LOG_FILE,
+# File handler with rotation
+file_handler = logging.handlers.RotatingFileHandler(
+    os.path.join(LOG_DIR, LOG_FILE),
     maxBytes=LOG_MAX_BYTES,
     backupCount=LOG_BACKUP_COUNT
 )
-rotating_file_handler.setFormatter(formatter)
-logger.addHandler(rotating_file_handler)
+file_handler.setFormatter(formatter)
+
+# Add handler to logger
+logger.addHandler(file_handler)
 
 logging.info("Stream Warden script started.")
 
