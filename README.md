@@ -2,7 +2,7 @@
 
 [![Python](https://img.shields.io/badge/python-3.7+-blue.svg)](https://www.python.org)
 
-Stream Warden is a Python script that intelligently manages your internet bandwidth by dynamically throttling qBittorrent upload speeds based on active streams from your media servers like Plex. **Support for Emby and Jellyfin is coming soon!** This ensures smooth streaming for you and your family or friends without your torrent uploads hogging all the bandwidth.
+[Stream Warden](https://github.com/Dosk3n/Stream-Warden) is a Python script that intelligently manages your internet bandwidth by dynamically throttling qBittorrent upload speeds based on active streams from your media servers like Plex. **Support for Emby and Jellyfin is coming soon!** This ensures smooth streaming for you and your family or friends without your torrent uploads hogging all the bandwidth.
 
 ## Features
 
@@ -18,7 +18,7 @@ Stream Warden is a Python script that intelligently manages your internet bandwi
 
 **Before Starting:**
 
-*   **Create a `config.yml` file:** You'll need to create a `config.yml` file locally on your system (e.g., at `/opt/stream-warden/config.yml`). You can use the example `config.yml` in the repository as a starting point and adjust the settings according to your preferences. **This file will be mounted into the docker container.**
+*   **Create a `config.yml` file:** You'll need to create a `config.yml` file locally on your system (e.g., at `/opt/stream-warden/config.yml`). You can use the example `config.yml` **available in the [GitHub repository](https://github.com/Dosk3n/Stream-Warden)** as a starting point and adjust the settings according to your preferences. **This file will be mounted into the docker container.**
 
 ### Using Docker
 
