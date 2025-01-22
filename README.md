@@ -26,8 +26,9 @@ Stream Warden is a Python script that intelligently manages your internet bandwi
 
 2. **Run the Docker Container**:
    ```bash
-   docker run -d --name stream-warden -v /path/to/config:/config dosk3n/stream-warden:latest
+   docker run --rm -v /opt/stream-warden/config:/config -v /opt/stream-warden/logs:/stream-warden/logs dosk3n/stream-warden:latest
    ```
+   This mounts the local config and logs directories and runs Stream Warden.
 
 ### Using Docker Compose
 
@@ -41,7 +42,8 @@ Stream Warden is a Python script that intelligently manages your internet bandwi
        image: dosk3n/stream-warden:latest
        container_name: stream-warden
        volumes:
-         - /path/to/config:/config
+         - /opt/stream-warden/config:/config
+         - /opt/stream-warden/logs:/stream-warden/logs
        restart: unless-stopped
    ```
 
