@@ -1,0 +1,38 @@
+# config.yml
+
+# --- Stream Warden Configuration ---
+
+stream_warden:
+  stream_threshold: 3  # Number of streams to trigger alternative mode
+  poll_interval: 60    # How often to check stream count (in seconds)
+  log_level: INFO      # Logging level (DEBUG, INFO, WARNING, ERROR, CRITICAL)
+
+plex:
+  enabled: true        # Enable/Disable Plex monitoring
+  url: "http://your-plex-server-ip:32400"  # Replace with your Plex server URL (default port is 32400)
+  token: "YOUR_PLEX_KEY"             # Replace with your Plex token
+
+emby:
+  enabled: false       # Enable/Disable Emby monitoring (default: disabled)
+  url: "http://your-emby-server-ip:8096"  # Replace with your Emby server URL (default port is 8096)
+  api_key: "YOUR_EMBY_API_KEY"           # Replace with your Emby API key
+
+jellyfin:
+  enabled: false       # Enable/Disable Jellyfin monitoring (default: disabled)
+  url: "http://your-jellyfin-server-ip:8096" # Replace with your Jellyfin server URL (default port is 8096)
+  api_key: "YOUR_JELLYFIN_API_KEY"         # Replace with your Jellyfin API key
+
+qbittorrent:
+  url: "http://your-qbittorrent-server-ip:8080"  # Replace with your qBittorrent Web UI URL (default port is 8080)
+  username: "USERNAME"  # Replace with your qBittorrent Web UI username
+  password: "PASSWORD"  # Replace with your qBittorrent Web UI password
+
+  rate_limits:
+    default:
+      upload: 0     # Global upload rate limit in KiB/s (0 for unlimited)
+      download: 0   # Global download rate limit in KiB/s (0 for unlimited)
+    throttled:
+      upload: 20480 # Throttled upload rate limit in KiB/s (20480 approx. 20 MB/s)
+      download: 0     # Throttled download rate limit in KiB/s (0 for unlimited download)
+
+# --- End of Configuration ---
