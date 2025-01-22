@@ -16,11 +16,34 @@
 
 ## Installation
 
-**Before Starting:**
+### Local Installation
 
-*   **Create a `config.yml` file:** You'll need to create a `config.yml` file locally on your system (e.g., at `/opt/stream-warden/config.yml`). You can use the example `config.yml` **available in the [GitHub repository](https://github.com/Dosk3n/Stream-Warden)** as a starting point and adjust the settings according to your preferences. **This file will be mounted into the docker container.**
+1.  **Clone the Repository:**
+    ```bash
+    git clone https://github.com/Dosk3n/Stream-Warden.git
+    cd Stream-Warden
+    ```
+
+2.  **Install Dependencies:**
+    ```bash
+    pip install -r requirements.txt
+    ```
+
+3.  **Configure `config.yml`:**
+    *   Create a `config.yml` file in the `Stream-Warden` directory. You can use the example `config.yml` **available in the [GitHub repository](https://github.com/Dosk3n/Stream-Warden)** as a starting point and adjust the settings according to your preferences.
+
+4. **Run the Script:**
+    ```bash
+    python stream_warden.py
+    ```
+    
+    *Stream Warden will now run in your terminal.*
 
 ### Using Docker
+
+**Before Starting (Docker):**
+
+*   **Create a `config.yml` file:** You'll need to create a `config.yml` file locally on your system (e.g., at `/opt/stream-warden/config.yml`). You can use the example `config.yml` **available in the [GitHub repository](https://github.com/Dosk3n/Stream-Warden)** as a starting point and adjust the settings according to your preferences. **This file will be mounted into the docker container.**
 
 1.  **Pull the Docker Image**:
     ```bash
@@ -62,4 +85,4 @@
 
 ## Configuration
 
-All configuration for Stream Warden is done through the `config.yml` file.  **Make sure you create a copy locally as mentioned in the 'Before Starting' section.**
+All configuration for Stream Warden is done through the `config.yml` file.  **Make sure you create a copy locally as mentioned in the 'Before Starting (Docker)' or 'Local Installation' sections.**
