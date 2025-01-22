@@ -4,21 +4,24 @@ import logging.handlers
 import time
 from plexapi.server import PlexServer
 import qbittorrentapi
+import os
 
 # --- Configuration Loading ---
+CONFIG_DIR = "config"
 CONFIG_FILE = "config.yml"
 
 def load_config():
-    """Loads configuration from config.yml."""
+    """Loads configuration from config/config.yml."""
+    config_path = os.path.join(CONFIG_DIR, CONFIG_FILE)  # Construct the full path
     try:
-        with open(CONFIG_FILE, "r", encoding='utf-8') as f: # Explicitly specify UTF-8 encoding
+        with open(config_path, "r", encoding='utf-8') as f:
             config = yaml.safe_load(f)
         return config
     except FileNotFoundError:
-        print(f"Error: {CONFIG_FILE} not found. Please make sure it exists in the same directory as the script.")
+        print(f"Error: {config_path} not found. Please ensure it exists.")
         exit(1)
     except yaml.YAMLError as e:
-        print(f"Error parsing {CONFIG_FILE}: {e}")
+        print(f"Error parsing {config_path}: {e}")
         exit(1)
 
 config = load_config()

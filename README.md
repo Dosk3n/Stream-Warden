@@ -16,4 +16,4 @@ Stream Warden is a Python script that intelligently manages your internet bandwi
 
 ## Configuration
 
-All configuration for Stream Warden is done through the `config.yml` file located in the same directory as the script.
+All configuration for Stream Warden is done through the `config.yml` file.
